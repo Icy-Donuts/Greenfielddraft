@@ -3,6 +3,7 @@ var request = require('../node_modules/request');
 var cheerio = require('../node_modules/cheerio');
 var _ = require("../node_modules/underscore");
 var Promise = require('../node_modules/bluebird');
+var Keywordadder = require('./roommatefilter.js')
 
 //promisifies  http request method to make code clearer
 var request = Promise.promisify(request)
@@ -59,9 +60,10 @@ module.exports.getLinkswithSigWord = function(city,apartmenttypekey,num){
 							obj.wordcount = countWords(obj.text)
 						})
 
-
-
-						resolve(results);
+						Keywordadder.addKeyWords(results).then(function(results){
+							console.log(results[0]);
+							resolve(results);
+						})
 
 
 					})

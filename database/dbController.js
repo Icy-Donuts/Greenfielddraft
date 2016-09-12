@@ -40,6 +40,7 @@ function downloadAllfromCity(city){
 			// })
 
 			function Download(){
+				console.log('HERE')
 				var listings = [];
 				var internal = function(j){
 					console.log('Finished ',j)
